@@ -11,18 +11,10 @@ import { find, replace } from "./findreplace.js";
 import { LocalStorage } from "node-localstorage";
 import cors from "cors";
 import jsdom from "jsdom";
-import HtmlTableToJson from "html-table-to-json";
-import { parse } from "node-html-parser";
-import HTMLParser from "node-html-parser";
 import axios from "axios";
 import { Server } from "socket.io";
-import { createServer } from "http";
 import * as http from "http";
 import timeout from "connect-timeout";
-
-import cleverbot from "cleverbot-free";
-import translate from "@vitalets/google-translate-api";
-import { normalize } from "path/posix";
 
 const __dirname = path.resolve(path.dirname(""));
 const { JSDOM } = jsdom;
@@ -65,6 +57,8 @@ var options = {
 Status 22 - Niewidoczny z opisem
 Status 24 - PoGGadam z opisem
 */
+
+localStorage = new LocalStorage("./scratch");
 
 const getFreshToken = async () => {
   await request(options, function (error, response) {
