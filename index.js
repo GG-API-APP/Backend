@@ -7,6 +7,7 @@ import Conversation from "./models/Conversations.js";
 import BigDbArray from "./models/BigDbArray.js";
 import request from "request";
 import replaceOnce from "replace-once";
+import { LocalStorage } from "node-localstorage";
 import { find, replace } from "./findreplace.js";
 import cors from "cors";
 import jsdom from "jsdom";
@@ -14,6 +15,8 @@ import axios from "axios";
 import { Server } from "socket.io";
 import * as http from "http";
 import timeout from "connect-timeout";
+
+localStorage = new LocalStorage("./scratch");
 
 const __dirname = path.resolve(path.dirname(""));
 const { JSDOM } = jsdom;
@@ -58,7 +61,7 @@ Status 24 - PoGGadam z opisem
 */
 
 const setLocalStorage = (key, value) => {
-  localStorage.setItem(key, JSON.stringify(value || ""));
+  window.localStorage.setItem(key, JSON.stringify(value || ""));
 };
 
 const getLocalStorage = (key) => {
