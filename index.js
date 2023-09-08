@@ -7,7 +7,6 @@ import Conversation from "./models/Conversations.js";
 import BigDbArray from "./models/BigDbArray.js";
 import request from "request";
 import replaceOnce from "replace-once";
-import { LocalStorage } from "node-localstorage";
 import { find, replace } from "./findreplace.js";
 import cors from "cors";
 import jsdom from "jsdom";
@@ -15,8 +14,6 @@ import axios from "axios";
 import { Server } from "socket.io";
 import * as http from "http";
 import timeout from "connect-timeout";
-
-localStorage = new LocalStorage("./scratch");
 
 const __dirname = path.resolve(path.dirname(""));
 const { JSDOM } = jsdom;
@@ -47,6 +44,8 @@ app.use(function (req, res, next) {
 
 //GET TOKEN
 
+let token = "";
+
 var options = {
   method: "GET",
   url: "https://botapi.gadu-gadu.pl/botmaster/getToken/75245214",
@@ -60,25 +59,17 @@ Status 22 - Niewidoczny z opisem
 Status 24 - PoGGadam z opisem
 */
 
-const setLocalStorage = (key, value) => {
-  window.localStorage.setItem(key, JSON.stringify(value || ""));
-};
-
-const getLocalStorage = (key) => {
-  return JSON.parse(localStorage.getItem(key)) || "";
-};
-
 const getFreshToken = async () => {
   await request(options, function (error, response) {
     if (error) throw new Error(error);
 
-    setLocalStorage("token", response.body.slice(57, 73));
+    token = response.body.slice(57, 73);
 
     var statusOptions = {
       method: "POST",
       url: "https://botapi-10.gadu-gadu.pl/setStatus/75245214",
       headers: {
-        Token: getLocalStorage("token"),
+        Token: token,
         "Content-Type": "text/plain",
       },
       form: {
@@ -248,7 +239,7 @@ app.post("/sendMessage/:number", async (req, res) => {
     headers: {
       "User-Agent": "https://botapi-10.gadu-gadu.pl/sendMessage/75245214",
       "Content-Type": "application/x-www-form-urlencoded",
-      Token: getLocalStorage("token"),
+      Token: token,
     },
     form: {
       msg: req.rawBody,
@@ -330,7 +321,7 @@ app.post("/botgg87705b52.html", async (req, res) => {
       headers: {
         "User-Agent": "https://botapi-10.gadu-gadu.pl/sendMessage/75245214",
         "Content-Type": "application/x-www-form-urlencoded",
-        Token: getLocalStorage("token"),
+        Token: token,
       },
       form: {
         msg: validateMessage(req.rawBody),
@@ -380,7 +371,7 @@ app.post("/botgg87705b52.html", async (req, res) => {
         headers: {
           "User-Agent": "https://botapi-10.gadu-gadu.pl/sendMessage/75245214",
           "Content-Type": "application/x-www-form-urlencoded",
-          Token: getLocalStorage("token"),
+          Token: token,
         },
         form: {
           msg: validateMessage(req.rawBody),
