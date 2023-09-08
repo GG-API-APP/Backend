@@ -91,7 +91,7 @@ var interval = setInterval(getFreshToken, 3600000);
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://yam1337.github.io",
+    origin: "https://https://gg-api-app.github.io",
     methods: ["GET", "POST"],
   },
 });
