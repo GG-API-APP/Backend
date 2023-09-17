@@ -269,7 +269,6 @@ app.post("/sendMessage/:number", async (req, res) => {
 });
 
 app.post("/botgg87705b52.html", async (req, res) => {
-  res.send("");
   io.emit("FromAPI", "New message!");
 
   const personDetails = await axios.get(
@@ -442,6 +441,7 @@ app.post("/botgg87705b52.html", async (req, res) => {
         console.log(err);
       }
     }
+    res.send("");
     // const lastBigArrayEl = bigArray[bigArray.length - 1];
   }
 });
