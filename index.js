@@ -121,29 +121,27 @@ io.on("connection", (socket) => {
 
 // CONVERSATIONS/GET
 app.get("/conversations", async (req, res) => {
-  // const test = await Conversation.findOne()
-  // const countQuery = await Conversation.count();
-  // const pageOptions = {
-  //   page: parseInt(req.query.page, 10) || 0,
-  //   limit: parseInt(req.query.limit, 10) || 10,
-  //   sort_by: req.query.sort_by || "-date",
-  //   increasing: req.query.increasing === "true" ? "" : "-",
-  // };
-  // try {
-  //   const conversations = await Conversation.find()
-  //     .sort(`${pageOptions.increasing}${pageOptions.sort_by}`)
-  //     .skip(pageOptions.page * pageOptions.limit)
-  //     .limit(pageOptions.limit);
-  //   let cuttedConversations = [...conversations];
-  //   for (let i = 0; i < cuttedConversations.length; i++) {
-  //     cuttedConversations[i].conversation = [];
-  //   }
-  //   res.send({ conversations: cuttedConversations, count: countQuery });
-      res.send({ conversations: {test: 'test'}, count: !!Conversation });
-  // } catch (err) {
-  //   console.log(err);
-  //   res.json({ message: err });
-  // }
+  const countQuery = await Conversation.count();
+  const pageOptions = {
+    page: parseInt(req.query.page, 10) || 0,
+    limit: parseInt(req.query.limit, 10) || 10,
+    sort_by: req.query.sort_by || "-date",
+    increasing: req.query.increasing === "true" ? "" : "-",
+  };
+  try {
+    const conversations = await Conversation.find()
+      .sort(`${pageOptions.increasing}${pageOptions.sort_by}`)
+      .skip(pageOptions.page * pageOptions.limit)
+      .limit(pageOptions.limit);
+    let cuttedConversations = [...conversations];
+    for (let i = 0; i < cuttedConversations.length; i++) {
+      cuttedConversations[i].conversation = [];
+    }
+    res.send({ conversations: cuttedConversations, count: countQuery });
+  } catch (err) {
+    console.log(err);
+    res.json({ message: err });
+  }
 });
 
 // REPLACEMENT
@@ -487,7 +485,7 @@ app.get("/botgg77472c00.html", (req, res) => {
 
 try {
   mongoose.connect(
-    process.env.DB_CONNECTION,
+    process.env.MONGODB_URI,
     { useNewUrlParser: true, useUnifiedTopology: true },
     () => console.log("Mongoose is connected")
   );
