@@ -15,7 +15,7 @@ import { Server } from "socket.io";
 import * as http from "http";
 import timeout from "connect-timeout";
 
-export const maxDuration = 60
+export const maxDuration = 60;
 
 const __dirname = path.resolve(path.dirname(""));
 const { JSDOM } = jsdom;
