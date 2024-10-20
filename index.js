@@ -483,7 +483,7 @@ app.get("/botgg77472c00.html", (req, res) => {
 
 //DB CONNECT
 
-console.log(process.env.MONGODB_URI)
+
 
 try {
   mongoose.connect(
