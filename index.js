@@ -122,26 +122,27 @@ io.on("connection", (socket) => {
 // CONVERSATIONS/GET
 app.get("/conversations", async (req, res) => {
   const countQuery = await Conversation.count();
-  const pageOptions = {
-    page: parseInt(req.query.page, 10) || 0,
-    limit: parseInt(req.query.limit, 10) || 10,
-    sort_by: req.query.sort_by || "-date",
-    increasing: req.query.increasing === "true" ? "" : "-",
-  };
-  try {
-    const conversations = await Conversation.find()
-      .sort(`${pageOptions.increasing}${pageOptions.sort_by}`)
-      .skip(pageOptions.page * pageOptions.limit)
-      .limit(pageOptions.limit);
-    let cuttedConversations = [...conversations];
-    for (let i = 0; i < cuttedConversations.length; i++) {
-      cuttedConversations[i].conversation = [];
-    }
-    res.send({ conversations: cuttedConversations, count: countQuery });
-  } catch (err) {
-    console.log(err);
-    res.json({ message: err });
-  }
+  // const pageOptions = {
+  //   page: parseInt(req.query.page, 10) || 0,
+  //   limit: parseInt(req.query.limit, 10) || 10,
+  //   sort_by: req.query.sort_by || "-date",
+  //   increasing: req.query.increasing === "true" ? "" : "-",
+  // };
+  // try {
+  //   const conversations = await Conversation.find()
+  //     .sort(`${pageOptions.increasing}${pageOptions.sort_by}`)
+  //     .skip(pageOptions.page * pageOptions.limit)
+  //     .limit(pageOptions.limit);
+  //   let cuttedConversations = [...conversations];
+  //   for (let i = 0; i < cuttedConversations.length; i++) {
+  //     cuttedConversations[i].conversation = [];
+  //   }
+  //   res.send({ conversations: cuttedConversations, count: countQuery });
+      res.send({ conversations: {test: 'test'}, count: countQuery });
+  // } catch (err) {
+  //   console.log(err);
+  //   res.json({ message: err });
+  // }
 });
 
 // REPLACEMENT
