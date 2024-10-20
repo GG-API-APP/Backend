@@ -121,7 +121,7 @@ io.on("connection", (socket) => {
 
 // CONVERSATIONS/GET
 app.get("/conversations", async (req, res) => {
-  const countQuery = await Conversation.count();
+  // const countQuery = await Conversation.count();
   // const pageOptions = {
   //   page: parseInt(req.query.page, 10) || 0,
   //   limit: parseInt(req.query.limit, 10) || 10,
@@ -138,7 +138,7 @@ app.get("/conversations", async (req, res) => {
   //     cuttedConversations[i].conversation = [];
   //   }
   //   res.send({ conversations: cuttedConversations, count: countQuery });
-      res.send({ conversations: {test: 'test'}, count: countQuery });
+      res.send({ conversations: {test: 'test'}, count: 1 });
   // } catch (err) {
   //   console.log(err);
   //   res.json({ message: err });
