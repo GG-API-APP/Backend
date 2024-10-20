@@ -57,6 +57,7 @@ var options = {
 /*
 Status 22 - Niewidoczny z opisem
 Status 24 - PoGGadam z opisem
+test koment
 */
 
 const getFreshToken = async () => {
