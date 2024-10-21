@@ -68,7 +68,7 @@ const getFreshToken = async () => {
 
     var statusOptions = {
       method: "POST",
-      url: "https://botapi-10.gadu-gadu.pl/setStatus/70386605",
+      url: "https://botapi-31.gadu-gadu.pl/setStatus/70386605",
       headers: {
         Token: token,
         "Content-Type": "text/plain",
@@ -236,9 +236,9 @@ app.post("/sendMessage/:number", async (req, res) => {
   res.send(`Send message: ${req.rawBody} to number: ${req.params.number}`);
   let messageOptions = {
     method: "POST",
-    url: "https://botapi-10.gadu-gadu.pl/sendMessage/70386605",
+    url: "https://botapi-31.gadu-gadu.pl/sendMessage/70386605",
     headers: {
-      "User-Agent": "https://botapi-10.gadu-gadu.pl/sendMessage/70386605",
+      "User-Agent": "https://botapi-31.gadu-gadu.pl/sendMessage/70386605",
       "Content-Type": "application/x-www-form-urlencoded",
       Token: token,
     },
@@ -317,9 +317,9 @@ app.post("/botgg77472c00.html", async (req, res) => {
     )[0];
     let messageOptions = {
       method: "POST",
-      url: "https://botapi-10.gadu-gadu.pl/sendMessage/70386605",
+      url: "https://botapi-31.gadu-gadu.pl/sendMessage/70386605",
       headers: {
-        "User-Agent": "https://botapi-10.gadu-gadu.pl/sendMessage/70386605",
+        "User-Agent": "https://botapi-31.gadu-gadu.pl/sendMessage/70386605",
         "Content-Type": "application/x-www-form-urlencoded",
         Token: token,
       },
@@ -367,9 +367,8 @@ app.post("/botgg77472c00.html", async (req, res) => {
     ) {
       let messageOptions = {
         method: "POST",
-        url: "https://botapi-10.gadu-gadu.pl/sendMessage/70386605",
+        url: "https://botapi-31.gadu-gadu.pl/sendMessage/70386605",
         headers: {
-          "User-Agent": "https://botapi-10.gadu-gadu.pl/sendMessage/70386605",
           "Content-Type": "application/x-www-form-urlencoded",
           Token: token,
         },
