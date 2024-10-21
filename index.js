@@ -329,13 +329,13 @@ app.post("/botgg77472c00.html", async (req, res) => {
       },
     };
     request(messageOptions);
-    // console.log(
-    //   `SEND TO: ${thisMessageFromPair} MSG: ${replaceOnce(
-    //     req.rawBody.toLowerCase(),
-    //     find,
-    //     replace
-    //   )}`
-    // );
+    console.log(
+      `SEND TO: ${thisMessageFromPair} MSG: ${replaceOnce(
+        req.rawBody.toLowerCase(),
+        find,
+        replace
+      )}`
+    );
 
     //PATCH DATABASE
     const exactConversation = await Conversation.findOne({
@@ -379,14 +379,14 @@ app.post("/botgg77472c00.html", async (req, res) => {
         },
       };
       request(messageOptions);
-      // console.log(
-      //   `SEND TO: ${bigArray[bigArray.length - 1][0]} MSG: ${replaceOnce(
-      //     req.rawBody.toLowerCase(),
-      //     find,
-      //     replace
-      //   )}`
-      // );
-      // console.log(`Its pair is ${bigArray[bigArray.length - 1][0]}`);
+      console.log(
+        `SEND TO: ${bigArray[bigArray.length - 1][0]} MSG: ${replaceOnce(
+          req.rawBody.toLowerCase(),
+          find,
+          replace
+        )}`
+      );
+      console.log(`Its pair is ${bigArray[bigArray.length - 1][0]}`);
       bigArray[bigArray.length - 1].push(thisMessageFrom);
       const dbArray = await BigDbArray.findOne();
       dbArray.dbArray = bigArray;
