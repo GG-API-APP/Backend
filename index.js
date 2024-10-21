@@ -90,12 +90,7 @@ var interval = setInterval(getFreshToken, 3600000);
 //WS SERVER
 
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "https://https://gg-api-app.github.io",
-    methods: ["GET", "POST"],
-  },
-});
+const io = new Server(server);
 
 // io.on("connection", (socket) => {
 //   console.log("a user connected");
@@ -233,7 +228,6 @@ BigDbArray.countDocuments(async (err, count) => {
 app.post("/sendMessage/:number", async (req, res) => {
   res.send("");
   console.log(req.rawBody, req.params.number);
-  res.send(`Send message: ${req.rawBody} to number: ${req.params.number}`);
   let messageOptions = {
     method: "POST",
     url: "https://botapi-31.gadu-gadu.pl/sendMessage/70386605",
@@ -247,6 +241,7 @@ app.post("/sendMessage/:number", async (req, res) => {
       to: req.params.number,
     },
   };
+
   request(messageOptions);
   //PATCH DB
   const exactConversation = await Conversation.findOne({
@@ -255,6 +250,7 @@ app.post("/sendMessage/:number", async (req, res) => {
       { personTwo: [req.params.number] },
     ],
   }).exec();
+  console.log(exactConversation)
   exactConversation.conversation.push({
     message: req.rawBody,
     messageValidated: "Brak walidacji",
@@ -272,6 +268,7 @@ app.post("/sendMessage/:number", async (req, res) => {
 app.post("/botgg77472c00.html", async (req, res) => {
   io.emit("FromAPI", "New message!");
 
+
   const personDetails = await axios.get(
     `http://ggludzie.vcx.pl/gg${req.query.from}.htm`
   );
@@ -280,6 +277,8 @@ app.post("/botgg77472c00.html", async (req, res) => {
     .querySelectorAll("p")[1]
     .textContent.replaceAll(" ", "")
     .split("\n");
+
+    res.send(`Send message: ${req.rawBody} to number: ${req.params.number}`);
 
   // const validateMessageNew = async (message) => {
   //   const validatedMessageArray = [];
@@ -298,7 +297,7 @@ app.post("/botgg77472c00.html", async (req, res) => {
   //CHECK IF NUMBER IS IN PAIR ARRAY
   const thisMessageFrom = Number(req.query.from);
   console.log(
-    `GOT FROM: ${thisMessageFrom} MSG: ${req.rawBody}, ${req.query.from}`
+    `GOT FROM: ${thisMessageFrom} MSG: ${req.rawBody}, ${req.query.from}, ${req.query.to}`
   );
   const searchBigArrayResult = bigArray.map((smollArray) =>
     smollArray.findIndex((smollArrayItem) => smollArrayItem === thisMessageFrom)
@@ -441,7 +440,7 @@ app.post("/botgg77472c00.html", async (req, res) => {
         console.log(err);
       }
     }
-    res.send("");
+    // res.send(`Send message: ${req.rawBody} to number: ${req.params.number}`);
     // const lastBigArrayEl = bigArray[bigArray.length - 1];
   }
 });
