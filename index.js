@@ -211,6 +211,7 @@ let bigArray = [];
 let dbArray = [];
 
 BigDbArray.countDocuments(async (err, count) => {
+  console.log('here', count)
   if (count > 0) {
     dbArray = await BigDbArray.find({});
     bigArray = dbArray[0].dbArray;
