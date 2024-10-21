@@ -266,6 +266,7 @@ app.post("/sendMessage/:number", async (req, res) => {
 });
 
 app.post("/botgg77472c00.html", async (req, res) => {
+  res.send('');
   io.emit("FromAPI", "New message!");
 
 
@@ -278,7 +279,6 @@ app.post("/botgg77472c00.html", async (req, res) => {
     .textContent.replaceAll(" ", "")
     .split("\n");
 
-    res.send('okej stefan');
 
   // const validateMessageNew = async (message) => {
   //   const validatedMessageArray = [];
