@@ -267,6 +267,7 @@ app.post("/sendMessage/:number", async (req, res) => {
 });
 
 app.post("/botgg77472c00.html", async (req, res) => {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
   res.send('');
   io.emit("FromAPI", "New message!");
 
