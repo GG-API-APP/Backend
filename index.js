@@ -293,7 +293,7 @@ app.post("/botgg77472c00.html", async (req, res) => {
   //   return validatedMessageArray.join(" ");
   // };
 
-  //CHECK IF DB HAS BIGARRAY
+  //CHECK IF DB HAS BIGARRAY test
 
   //CHECK IF NUMBER IS IN PAIR ARRAY
   const thisMessageFrom = Number(req.query.from);
