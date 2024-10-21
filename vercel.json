@@ -14,10 +14,10 @@
   ],
   "functions": {
     "api/test.js": {
-      "maxDuration": 60
+      "maxDuration": 30
     },
     "api/*.js": {
-      "maxDuration": 60
+      "maxDuration": 15
     }
   }
 }
