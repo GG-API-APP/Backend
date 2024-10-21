@@ -278,7 +278,7 @@ app.post("/botgg77472c00.html", async (req, res) => {
     .textContent.replaceAll(" ", "")
     .split("\n");
 
-    res.send(`Send message: ${req.rawBody} to number: ${req.params.number}`);
+    res.send('okej stefan');
 
   // const validateMessageNew = async (message) => {
   //   const validatedMessageArray = [];
